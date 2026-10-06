@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix de l'année</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow-x: hidden;
+            background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+            background-attachment: fixed;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .wave {
+            background: rgb(255 255 255 / 25%);
+            border-radius: 1000% 1000% 0 0;
+            position: fixed;
+            width: 200%;
+            height: 12em;
+            animation: wave 10s -3s linear infinite;
+            transform: translate3d(0, 0, 0);
+            opacity: 0.8;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .wave:nth-of-type(2) { bottom: -1.25em; animation: wave 18s linear reverse infinite; opacity: 0.8; }
+        .wave:nth-of-type(3) { bottom: -2.5em; animation: wave 20s -1s reverse infinite; opacity: 0.9; }
+
+        @keyframes wave {
+            2% { transform: translateX(1); }
+            25% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); }
+            75% { transform: translateX(-25%); }
+            100% { transform: translateX(1); }
+        }
+
+        .back-button {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            z-index: 10;
+        }
+        .back-button:hover { background: white; color: #1e1e1e; transform: scale(1.05); }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 60px 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: white;
+            margin: 25px auto 30px auto;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            margin: 0 auto 40px auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .subtitle p { margin: 10px 0; }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .menu a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.4s;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .menu a:hover {
+            background: white;
+            color: #1e1e1e;
+            border-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+            text-shadow: none;
+        }
+
+        @media (max-width: 600px) {
+            .back-button { top: 15px; left: 15px; font-size: 0.75rem; padding: 8px 15px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+
+    <a class="back-button" href="index.html">← Retour à l'acceuil</a>
+
+    <div class="container">
+        <h1>Missions</h1>
+
+        <div class="subtitle">
+            <p>L'ensemble des missions réalisées au cours de ma formation se répartit sur deux années.</p>
+            <p>Veuillez sélectionner l'année souhaitée pour consulter les missions correspondantes.</p>
+        </div>
+
+        <div class="menu">
+            <a href="semestre_1.html">1ère Année</a>
+            <a href="semestre_2.html">2ème Année</a>
+        </div>
+    </div>
+
+</body>
+</html>
