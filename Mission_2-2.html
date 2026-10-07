@@ -145,14 +145,21 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        .image-wrapper {
-            text-align: center;
+        /* Section bas de page : image à gauche, bouton à droite */
+        .bottom-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
             margin-top: 40px;
+        }
+
+        .bottom-section .image-wrapper {
+            flex-shrink: 0;
         }
 
         .project-image {
             width: 100%;
-            max-width: 450px;
+            max-width: 350px;
             border-radius: 10px;
             cursor: zoom-in;
             transition: 0.3s;
@@ -164,6 +171,46 @@
             transform: scale(1.05);
             border-color: white;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Bouton de téléchargement PDF */
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .download-buttons a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .download-buttons a:hover {
+            background: white;
+            color: #1e1e1e;
+            border-color: white;
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+            text-shadow: none;
+        }
+
+        .download-buttons a::before {
+            content: '📄';
+            font-size: 1.3rem;
         }
 
         #zoom-container {
@@ -230,6 +277,13 @@
             h1 {
                 font-size: 1.8rem;
             }
+            .bottom-section {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .project-image {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -276,8 +330,15 @@
             Ce TP est le premier que nous avons réalisé cette année. Découvrir comment fonctionne un Proxmox et l'installation des différents services était plutôt facile mais tout autant intéressant.
         </p>
 
-        <div class="image-wrapper">
-            <img src="nextcloud.png" class="project-image" onclick="zoom(this.src)" alt="Aperçu des activités">
+        <!-- Section image à gauche + bouton PDF à droite -->
+        <div class="bottom-section">
+            <div class="image-wrapper">
+                <img src="nextcloud.png" class="project-image" onclick="zoom(this.src)" alt="Aperçu des activités">
+            </div>
+
+            <div class="download-buttons">
+                <a href="pdf/tutoriel_admin_windows.pdf" download>Tutoriel Admin Windows</a>
+            </div>
         </div>
     </div>
 
