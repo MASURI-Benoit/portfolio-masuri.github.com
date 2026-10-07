@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission 2 - administration windows</title>
+    <title>Mission 2 - Administration Windows</title>
 
     <style>
         body {
-            /* Fusion des styles, avec police unifiée et flexbox vertical */
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
@@ -18,25 +17,20 @@
             padding: 40px 20px;
             box-sizing: border-box;
             position: relative; 
-            
-            /* Empêche les vagues de créer un scroll horizontal */
             overflow-x: hidden; 
 
-            /* Arrière-plan animé */
             background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
             animation: gradient 15s ease infinite;
             background-size: 400% 400%;
             background-attachment: fixed;
         }
 
-        /* Animations du fond */
         @keyframes gradient {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
 
-        /* Styles des vagues */
         .wave {
             background: rgb(255 255 255 / 25%);
             border-radius: 1000% 1000% 0 0;
@@ -71,7 +65,6 @@
             100% { transform: translateX(1); }
         }
 
-        /* Bouton retour (mis à jour comme sur les autres pages) */
         .back-button {
             position: absolute;
             top: 25px;
@@ -97,7 +90,6 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
 
-        /* Encadré principal pour englober le texte (Glassmorphism) */
         .container {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -108,7 +100,7 @@
             -webkit-backdrop-filter: blur(12px);
             max-width: 850px;
             width: 100%;
-            margin-top: 30px; /* Laisse de l'espace par rapport au bouton retour sur PC */
+            margin-top: 30px;
         }
 
         h1 {
@@ -131,7 +123,6 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* Mini-titres stylisés */
         .mini-title {
             font-size: 1.3rem;
             font-weight: bold;
@@ -144,7 +135,16 @@
             padding-bottom: 5px;
         }
 
-        /* Conteneur pour centrer l'image */
+        ul {
+            text-align: left;
+            margin: 10px auto 20px auto;
+            max-width: 600px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
         .image-wrapper {
             text-align: center;
             margin-top: 40px;
@@ -166,7 +166,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
-        /* Lightbox zoom */
         #zoom-container {
             display: none;
             position: fixed;
@@ -175,7 +174,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px); /* Flou derrière l'image zoomée */
+            backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
@@ -218,7 +217,6 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Adaptation pour petits écrans de téléphone */
         @media (max-width: 768px) {
             .back-button {
                 position: static;
@@ -248,28 +246,34 @@
 
     <!-- Le contenu est maintenant dans la boîte Glassmorphism -->
     <div class="container">
-        <h1>Mission 2 - Administration windows</h1>
+        <h1>Mission 2 - Administration Windows</h1>
 
-        <p>Lors de cette première mission de l'année, nous avons réalisé diverses tâches afin de nous préparer à la recherche de stage. Elles étaient réparties en quatre catégories :</p>
-
-        <div class="mini-title">Recherche de métiers</div>
+        <div class="mini-title">Contexte</div>
         <p>
-            Cette partie consistait à visionner et lire des articles sur différents métiers liés à notre formation, afin de mieux comprendre les débouchés possibles et choisir une orientation future.
+            Comme pour les prochaines et précédentes missions, nous serons amenés à utiliser le contexte de sous-traitant de la société Home Sweet Home (HSH).
         </p>
 
-        <div class="mini-title">Rédaction d’un CV</div>
+        <div class="mini-title">Matériel à disposition</div>
         <p>
-            Le CV que nous avons rédigé était surtout un peaufinage : mise en forme plus professionnelle, corrections, et ajout des informations manquantes.
+            Le matériel qu'on a eu à notre disposition est simple, un simple PC fixe nous a été confié. Mais on nous a donné l'accès à Proxmox, mis en place par nos professeurs.
+            Dans Proxmox, nous avons plusieurs modèles de machine, ce qui nous a grandement servi pour pouvoir commencer l'activité rapidement et nous donner une configuration basique, bien que modifiée par la suite.
         </p>
 
-        <div class="mini-title">Mail motivé</div>
+        <div class="mini-title">Installation des services demandés</div>
         <p>
-            Nous avons rédigé un mail de motivation type ainsi qu’un mail personnalisé destiné à des entreprises susceptibles de nous accueillir en stage.
+            Une fois le serveur lancé, il nous a été demandé d'installer les services suivants :
+        </p>
+        <ul>
+            <li>Active Directory</li>
+            <li>DHCP</li>
+        </ul>
+        <p>
+            Ces installations et configurations de services ont été répertoriées et ont eu un suivi via un tutoriel qu'on nous a demandé de faire, vous le trouverez en bas de page.
         </p>
 
-        <div class="mini-title">Simulations d’entretien</div>
+        <div class="mini-title">Petit compte rendu personnel</div>
         <p>
-            Notre professeur jouait le rôle d’un recruteur. L’entretien se déroulait dans un cadre professionnel et s’est révélé très enrichissant pour comprendre les attentes d’un employeur.
+            Ce TP est le premier que nous avons réalisé cette année. Découvrir comment fonctionne un Proxmox et l'installation des différents services était plutôt facile mais tout autant intéressant.
         </p>
 
         <div class="image-wrapper">
@@ -287,13 +291,13 @@
         function zoom(src) {
             document.getElementById("zoom-img").src = src;
             document.getElementById("zoom-container").style.display = "flex";
-            document.body.style.overflow = 'hidden'; // Empêche le défilement de l'arrière-plan
+            document.body.style.overflow = 'hidden';
         }
 
         function closeZoom() {
             document.getElementById("zoom-container").style.display = "none";
-            document.body.style.overflowY = 'auto'; // Réactive le défilement vertical
-            document.body.style.overflowX = 'hidden'; // Garde le défilement horizontal masqué pour les vagues
+            document.body.style.overflowY = 'auto';
+            document.body.style.overflowX = 'hidden';
         }
     </script>
 
