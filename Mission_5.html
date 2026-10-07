@@ -7,7 +7,6 @@
 
     <style>
         body {
-            /* Fusion des styles, avec police unifiée et flexbox vertical */
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
@@ -18,25 +17,20 @@
             padding: 40px 20px;
             box-sizing: border-box;
             position: relative; 
-            
-            /* Empêche les vagues de créer un scroll horizontal */
             overflow-x: hidden; 
 
-            /* Arrière-plan animé */
             background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
             animation: gradient 15s ease infinite;
             background-size: 400% 400%;
             background-attachment: fixed;
         }
 
-        /* Animations du fond */
         @keyframes gradient {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
 
-        /* Styles des vagues */
         .wave {
             background: rgb(255 255 255 / 25%);
             border-radius: 1000% 1000% 0 0;
@@ -71,7 +65,6 @@
             100% { transform: translateX(1); }
         }
 
-        /* Bouton retour (mis à jour comme sur les autres pages) */
         .back-button {
             position: absolute;
             top: 25px;
@@ -97,7 +90,6 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
 
-        /* Encadré principal pour englober le texte (Glassmorphism) */
         .container {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -131,7 +123,6 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* Mini-titres stylisés */
         .mini-title {
             font-size: 1.3rem;
             font-weight: bold;
@@ -144,12 +135,9 @@
             padding-bottom: 5px;
         }
 
-        /* Conteneur pour centrer l'image */
         .image-wrapper {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
             margin-top: 40px;
         }
 
@@ -169,7 +157,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
-        /* Lightbox zoom */
         #zoom-container {
             display: none;
             position: fixed;
@@ -221,7 +208,6 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Adaptation pour petits écrans de téléphone */
         @media (max-width: 768px) {
             .back-button {
                 position: static;
@@ -241,21 +227,18 @@
 
 <body>
 
-    <!-- Éléments pour l'effet de vagues (en fond) -->
     <div class="wave"></div>
     <div class="wave"></div>
     <div class="wave"></div>
 
-    <!-- Bouton retour -->
     <a class="back-button" href="semestre_2.html">← Retour au menu</a>
 
-    <!-- Le contenu dans la boîte Glassmorphism -->
     <div class="container">
         <h1>Projet 5 - Mise en place d'un réseau poste à poste</h1>
 
         <div class="mini-title">Introduction</div>
         <p>
-            Cette mission fut la première du deuxième semestre et, par extension, la première à vraiment se focaliser sur l’aspect professionnel de notre filière.
+            Cette mission fut la première du deuxième semestre et, par extension, la première à vraiment se focaliser sur l'aspect professionnel de notre filière.
         </p>
 
         <div class="mini-title">Organisation de la mission</div>
@@ -273,16 +256,21 @@
         <div class="mini-title">Partie pratique (matériel réel)</div>
         <p>
             La deuxième partie consistait à refaire les mêmes étapes, mais cette fois avec du matériel réel, ce qui nous a permis de comprendre concrètement le fonctionnement des équipements.  
-            La différence avec la partie théorique résidait dans la nécessité de créer des dossiers pour chaque utilisateur et d’attribuer les autorisations en fonction des consignes de l’activité.
+            La différence avec la partie théorique résidait dans la nécessité de créer des dossiers pour chaque utilisateur et d'attribuer les autorisations en fonction des consignes de l'activité.
         </p>
 
-        <div class="mini-title">Rédaction d’un tutoriel</div>
+        <div class="mini-title">Rédaction d'un tutoriel</div>
         <p>
             En parallèle de cette activité, nous avons dû rédiger un tutoriel permettant à une personne peu expérimentée de réaliser un travail similaire au nôtre.
         </p>
+
+        <!-- Image centrée -->
+        <div class="image-wrapper">
+            <img src="ptp.png" class="project-image" onclick="zoom(this.src)" alt="Aperçu du réseau poste à poste">
+        </div>
     </div>
 
-    <!-- Lightbox (Zoom) - Gardé au cas où tu rajouterais une image plus tard -->
+    <!-- Lightbox (Zoom) -->
     <div id="zoom-container" onclick="closeZoom()">
         <span id="zoom-close">&times;</span>
         <img id="zoom-img" src="">
@@ -292,13 +280,13 @@
         function zoom(src) {
             document.getElementById("zoom-img").src = src;
             document.getElementById("zoom-container").style.display = "flex";
-            document.body.style.overflow = 'hidden'; // Empêche le défilement de l'arrière-plan
+            document.body.style.overflow = 'hidden';
         }
 
         function closeZoom() {
             document.getElementById("zoom-container").style.display = "none";
-            document.body.style.overflowY = 'auto'; // Réactive le défilement vertical
-            document.body.style.overflowX = 'hidden'; // Garde le défilement horizontal masqué pour les vagues
+            document.body.style.overflowY = 'auto';
+            document.body.style.overflowX = 'hidden';
         }
     </script>
 
