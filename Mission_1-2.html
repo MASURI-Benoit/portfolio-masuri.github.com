@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission 1 - travail collaboratif </title>
+    <title>Mission 1 - Travail collaboratif</title>
 
     <style>
         body {
-            /* Fusion des styles, avec police unifiée et flexbox vertical */
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
@@ -18,25 +17,20 @@
             padding: 40px 20px;
             box-sizing: border-box;
             position: relative; 
-            
-            /* Empêche les vagues de créer un scroll horizontal */
             overflow-x: hidden; 
 
-            /* Arrière-plan animé */
             background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
             animation: gradient 15s ease infinite;
             background-size: 400% 400%;
             background-attachment: fixed;
         }
 
-        /* Animations du fond */
         @keyframes gradient {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
 
-        /* Styles des vagues */
         .wave {
             background: rgb(255 255 255 / 25%);
             border-radius: 1000% 1000% 0 0;
@@ -71,7 +65,6 @@
             100% { transform: translateX(1); }
         }
 
-        /* Bouton retour (mis à jour comme sur les autres pages) */
         .back-button {
             position: absolute;
             top: 25px;
@@ -97,7 +90,6 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
 
-        /* Encadré principal pour englober le texte (Glassmorphism) */
         .container {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -108,7 +100,7 @@
             -webkit-backdrop-filter: blur(12px);
             max-width: 850px;
             width: 100%;
-            margin-top: 30px; /* Laisse de l'espace par rapport au bouton retour sur PC */
+            margin-top: 30px;
         }
 
         h1 {
@@ -131,7 +123,6 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* Mini-titres stylisés */
         .mini-title {
             font-size: 1.3rem;
             font-weight: bold;
@@ -144,7 +135,16 @@
             padding-bottom: 5px;
         }
 
-        /* Conteneur pour centrer l'image */
+        ul {
+            text-align: left;
+            margin: 10px auto 20px auto;
+            max-width: 600px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
         .image-wrapper {
             text-align: center;
             margin-top: 40px;
@@ -166,7 +166,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
-        /* Lightbox zoom */
         #zoom-container {
             display: none;
             position: fixed;
@@ -175,7 +174,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px); /* Flou derrière l'image zoomée */
+            backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
@@ -218,7 +217,6 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Adaptation pour petits écrans de téléphone */
         @media (max-width: 768px) {
             .back-button {
                 position: static;
@@ -250,34 +248,32 @@
     <div class="container">
         <h1>Mission 1 — Travail collaboratif</h1>
 
-        <p></p>
-
-        <div class="mini-title">Recherche de Solutions </div>
+        <div class="mini-title">Recherche de solutions</div>
         <p>
-           Dans un premier temps, l'étape directrice de notre travail fût de trouver un logiciel permettant de répondre efficacement au cahier des charges demandé. Toute nos recherches nous ont ammené vers "Nextcloud" qui correspondait pleinement au cahier des charges.
+            Dans un premier temps, l'étape directrice de notre travail fut de trouver un logiciel permettant de répondre efficacement au cahier des charges demandé. Toutes nos recherches nous ont amenés vers "Nextcloud" qui correspondait pleinement au cahier des charges.
         </p>
 
-        <div class="mini-title">Le cahier des charges : </div>
-        <p>
-            - Hébergement possible en DMZ
-            - Logiciel libre et Français
-            - Gestion des utilisateurs et LDAP
-            - Droits d'accès par dossiers 
-            - Agendas personnels et collectifs
-            - Messagerie instantanée & chat 
-            - Forum / Espace d'actualité.
-        </p>
+        <div class="mini-title">Le cahier des charges</div>
+        <ul>
+            <li>Hébergement possible en DMZ</li>
+            <li>Logiciel libre et français</li>
+            <li>Gestion des utilisateurs et LDAP</li>
+            <li>Droits d'accès par dossiers</li>
+            <li>Agendas personnels et collectifs</li>
+            <li>Messagerie instantanée & chat</li>
+            <li>Forum / Espace d'actualité</li>
+        </ul>
 
         <div class="mini-title">Mise en place de Nextcloud</div>
         <p>
-            Pour la mise en place de Nextcloud, il nous a été demandé de faire un tutoriel en parallèle pour garder une trace de notre travail. Celui ci décrit étape par étape chacune de nos actions.
-            Si cela vous intéresse une copie du tutoriel est disponible en bas de page.
+            Pour la mise en place de Nextcloud, il nous a été demandé de faire un tutoriel en parallèle pour garder une trace de notre travail. Celui-ci décrit étape par étape chacune de nos actions.
+            Si cela vous intéresse, une copie du tutoriel est disponible en bas de page.
         </p>
 
         <div class="mini-title">Petit compte rendu personnel</div>
         <p>
-            Ce premier AP était très compliqué à réaliser. Avec mon binome, nous avons rencontré beaucoup de difficultée, notamment avec l'installation du LDAP sur Nextcloud.
-            Malgré tout, c'était intéressant d'observer et de manipuler un logiciel de travail collaboratif et de le paramétrer nous même. 
+            Ce premier AP était très compliqué à réaliser. Avec mon binôme, nous avons rencontré beaucoup de difficultés, notamment avec l'installation du LDAP sur Nextcloud.
+            Malgré tout, c'était intéressant d'observer et de manipuler un logiciel de travail collaboratif et de le paramétrer nous-mêmes.
         </p>
 
         <div class="image-wrapper">
@@ -295,13 +291,13 @@
         function zoom(src) {
             document.getElementById("zoom-img").src = src;
             document.getElementById("zoom-container").style.display = "flex";
-            document.body.style.overflow = 'hidden'; // Empêche le défilement de l'arrière-plan
+            document.body.style.overflow = 'hidden';
         }
 
         function closeZoom() {
             document.getElementById("zoom-container").style.display = "none";
-            document.body.style.overflowY = 'auto'; // Réactive le défilement vertical
-            document.body.style.overflowX = 'hidden'; // Garde le défilement horizontal masqué pour les vagues
+            document.body.style.overflowY = 'auto';
+            document.body.style.overflowX = 'hidden';
         }
     </script>
 
