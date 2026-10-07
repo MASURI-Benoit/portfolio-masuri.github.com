@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission 1</title>
+
+    <style>
+        body {
+            /* Fusion des styles, avec police unifiée et flexbox vertical */
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative; 
+            
+            /* Empêche les vagues de créer un scroll horizontal */
+            overflow-x: hidden; 
+
+            /* Arrière-plan animé */
+            background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+            background-attachment: fixed;
+        }
+
+        /* Animations du fond */
+        @keyframes gradient {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Styles des vagues */
+        .wave {
+            background: rgb(255 255 255 / 25%);
+            border-radius: 1000% 1000% 0 0;
+            position: fixed;
+            width: 200%;
+            height: 12em;
+            animation: wave 10s -3s linear infinite;
+            transform: translate3d(0, 0, 0);
+            opacity: 0.8;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .wave:nth-of-type(2) {
+            bottom: -1.25em;
+            animation: wave 18s linear reverse infinite;
+            opacity: 0.8;
+        }
+
+        .wave:nth-of-type(3) {
+            bottom: -2.5em;
+            animation: wave 20s -1s reverse infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes wave {
+            2% { transform: translateX(1); }
+            25% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); }
+            75% { transform: translateX(-25%); }
+            100% { transform: translateX(1); }
+        }
+
+        /* Bouton retour (mis à jour comme sur les autres pages) */
+        .back-button {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: #1e1e1e;
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Encadré principal pour englober le texte (Glassmorphism) */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            max-width: 850px;
+            width: 100%;
+            margin-top: 30px; /* Laisse de l'espace par rapport au bouton retour sur PC */
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Mini-titres stylisés */
+        .mini-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 35px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            display: inline-block;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 5px;
+        }
+
+        /* Conteneur pour centrer l'image */
+        .image-wrapper {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 10px;
+            cursor: zoom-in;
+            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+            border-color: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Lightbox zoom */
+        #zoom-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px); /* Flou derrière l'image zoomée */
+            -webkit-backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        #zoom-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            animation: zoomIn 0.25s ease;
+        }
+
+        #zoom-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 3rem;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #zoom-close:hover {
+            color: #ff4757;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Adaptation pour petits écrans de téléphone */
+        @media (max-width: 768px) {
+            .back-button {
+                position: static;
+                align-self: flex-start;
+                margin-bottom: 20px;
+            }
+            .container {
+                padding: 30px 20px;
+                margin-top: 0;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Éléments pour l'effet de vagues (en fond) -->
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+
+    <!-- Bouton retour -->
+    <a class="back-button" href="semestre_1.html">← Retour au menu</a>
+
+    <!-- Le contenu est maintenant dans la boîte Glassmorphism -->
+    <div class="container">
+        <h1>Mission 1 — Activités professionnelles diverses</h1>
+
+        <p>Lors de cette première mission de l'année, nous avons réalisé diverses tâches afin de nous préparer à la recherche de stage. Elles étaient réparties en quatre catégories :</p>
+
+        <div class="mini-title">Recherche de métiers</div>
+        <p>
+            Cette partie consistait à visionner et lire des articles sur différents métiers liés à notre formation, afin de mieux comprendre les débouchés possibles et choisir une orientation future.
+        </p>
+
+        <div class="mini-title">Rédaction d’un CV</div>
+        <p>
+            Le CV que nous avons rédigé était surtout un peaufinage : mise en forme plus professionnelle, corrections, et ajout des informations manquantes.
+        </p>
+
+        <div class="mini-title">Mail motivé</div>
+        <p>
+            Nous avons rédigé un mail de motivation type ainsi qu’un mail personnalisé destiné à des entreprises susceptibles de nous accueillir en stage.
+        </p>
+
+        <div class="mini-title">Simulations d’entretien</div>
+        <p>
+            Notre professeur jouait le rôle d’un recruteur. L’entretien se déroulait dans un cadre professionnel et s’est révélé très enrichissant pour comprendre les attentes d’un employeur.
+        </p>
+
+        <div class="image-wrapper">
+            <img src="A214_2.jpg" class="project-image" onclick="zoom(this.src)" alt="Aperçu des activités">
+        </div>
+    </div>
+
+    <!-- Lightbox (Zoom) -->
+    <div id="zoom-container" onclick="closeZoom()">
+        <span id="zoom-close">&times;</span>
+        <img id="zoom-img" src="">
+    </div>
+
+    <script>
+        function zoom(src) {
+            document.getElementById("zoom-img").src = src;
+            document.getElementById("zoom-container").style.display = "flex";
+            document.body.style.overflow = 'hidden'; // Empêche le défilement de l'arrière-plan
+        }
+
+        function closeZoom() {
+            document.getElementById("zoom-container").style.display = "none";
+            document.body.style.overflowY = 'auto'; // Réactive le défilement vertical
+            document.body.style.overflowX = 'hidden'; // Garde le défilement horizontal masqué pour les vagues
+        }
+    </script>
+
+</body>
+</html>
